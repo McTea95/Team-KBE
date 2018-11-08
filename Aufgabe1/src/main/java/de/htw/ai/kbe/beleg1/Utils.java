@@ -37,12 +37,10 @@ public class Utils {
 				if(cmd.hasOption("o")){		//Output File-Option (-o example.txt)
 					//System.out.println("Output File: " + cmd.getOptionValue("o"));
 					File outputFile = new File(cmd.getOptionValue("o"));
-					String fileType = outputFile.getName().substring(outputFile.getName().indexOf('.'));	//Überprüfung Outputfile-Dateiendung
-					//System.out.println("File Type: " + fileType);
-					if(fileType.toLowerCase().equals(".txt")){
+					if(outputFileExists==false	){
 						//OutputFile kann erstellt werden
 						outputFileExists=true;		
-						setOutputFilename(outputFile.getName());
+						setOutputFilename(outputFile.getName()+".txt");
 					}
 				}
 				else {
@@ -53,11 +51,9 @@ public class Utils {
 				
 				
 				if(cmd.hasOption("c")){		//c-Option (-p example.properties)
-					File className = new File(cmd.getOptionValue("c"));
-					String fileType = className.getName().substring(className.getName().indexOf('.'));	//Dateiende der className überprüfen
-					String Pfad = "de.htw.ai.kbe.beleg1."+(cmd.getOptionValue("c"));
-					//System.out.println("File Type: " + fileType);
-					if(fileType.toLowerCase().equals(".java")){		
+					File className = new File(cmd.getOptionValue("c")+".java");
+					String Pfad = "de.htw.ai.kbe.beleg1."+className.getName();
+					//System.out.println("File Type: " + fileType);	
 						if (className.exists()){		//Überprüfen ob die Datei vorhanden ist	//Überprüfen ob der Key "RunMe" in der className vorhanden ist
 								//Aufruf von loadClass um die Klasse im Key "RunMe" auszulesen
 								CheckResult results = loadClass(Pfad);	//CheckResult ist eine selbsterstellte Klasse, in welche die Ergebnisse gespeichert werden (Methodenzählung, Namen, etc)	
@@ -74,9 +70,6 @@ public class Utils {
 						else {
 							System.out.println("Fehler: Die Class-Datei " + className.getName() + " wurde nicht gefunden!");
 						}
-					}else {
-					System.out.println("Bitte geben Sie ihre Class-Datei an ('-c test.java')");
-				}
 				}
 				
 				
