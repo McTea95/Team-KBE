@@ -1,0 +1,10 @@
+Anzahl der Methoden: 5
+Anzahl der @RunMe-Methoden: 2
+Namen aller @RunMe-Methoden der Klasse:
+	methodE
+	methodA
+Namen aller Methoden die nicht Invoked wurden:
+	methodE
+	methodC
+	methodD
+	methodB
