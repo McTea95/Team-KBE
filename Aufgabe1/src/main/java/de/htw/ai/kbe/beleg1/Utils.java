@@ -76,6 +76,8 @@ public class Utils {
 			} catch (ParseException e) {
 				System.out.println("Commandline konnte nicht geparset werden.");
 				e.printStackTrace();
+			}catch(NullPointerException e) {
+				e.printStackTrace();
 			}
 		}
 	}
