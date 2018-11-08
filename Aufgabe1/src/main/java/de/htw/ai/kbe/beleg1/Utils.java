@@ -51,11 +51,10 @@ public class Utils {
 				
 				
 				if(cmd.hasOption("c")){		//c-Option (-p example.properties)
-					File className = new File(cmd.getOptionValue("c")+".java");
+					File className = new File(cmd.getOptionValue("c"));
 					String Pfad = "de.htw.ai.kbe.beleg1."+className.getName();
 					//System.out.println("File Type: " + fileType);	
-						if (className.exists()){		//Überprüfen ob die Datei vorhanden ist	//Überprüfen ob der Key "RunMe" in der className vorhanden ist
-								//Aufruf von loadClass um die Klasse im Key "RunMe" auszulesen
+						if (className.exists()){	
 								CheckResult results = loadClass(Pfad);	//CheckResult ist eine selbsterstellte Klasse, in welche die Ergebnisse gespeichert werden (Methodenzählung, Namen, etc)	
 								if(outputFileExists){		//Wenn eine Output-File vom User angegeben wurde wird die createReportFile-function genutzt
 									if(createReportFile(getOutputFilename(), results)){
@@ -69,6 +68,7 @@ public class Utils {
 						}
 						else {
 							System.out.println("Fehler: Die Class-Datei " + className.getName() + " wurde nicht gefunden!");
+							
 						}
 				}
 				
